@@ -2,7 +2,12 @@ import puppeteer from 'puppeteer';
 
 export async function captureChart(playerName) {
   try {
-    const browser = await puppeteer.launch();
+    // Launch Puppeteer browser with no sandbox mode
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'], // Necessary arguments for Railway
+      headless: true, // Run in headless mode to work on servers
+    });
+
     const page = await browser.newPage();
     const url = `http://localhost:3000/chart?player=${encodeURIComponent(playerName)}`;
     console.log(`Navigating to URL: ${url}`);
