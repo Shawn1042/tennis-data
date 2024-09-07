@@ -2,14 +2,13 @@ import puppeteer from 'puppeteer';
 
 export async function captureChart(playerName) {
   try {
-    // Launch Puppeteer browser with no sandbox mode
+    // Replace 'localhost:3000' with your Railway domain
+    const baseUrl = process.env.RAILWAY_WEB_URL || 'http://localhost:3000';
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'], // Necessary arguments for Railway
-      headless: true, // Run in headless mode to work on servers
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
-
     const page = await browser.newPage();
-    const url = `http://localhost:3000/chart?player=${encodeURIComponent(playerName)}`;
+    const url = `${baseUrl}/chart?player=${encodeURIComponent(playerName)}`;
     console.log(`Navigating to URL: ${url}`);
 
     await page.goto(url, { waitUntil: 'networkidle2' });
