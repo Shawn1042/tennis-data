@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Tennis Data</title>
+    <!-- Include Chart.js from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include the Chart.js Data Labels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <style>
+        body {
+            background-color: #1e1e1e; /* Dark background color */
+            color: #d4d4d4; /* Light text color */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #playerStatsChart {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 1000px; /* Increase the width to make chart wider */
+            background-color: #2d2d2d; /* Darker background for the chart */
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #3a3a3a; /* Button background color */
+            color: #d4d4d4; /* Button text color */
+            border: none;
+            border-radius: 5px;
+        }
+
+        input::placeholder {
+            color: #888; /* Placeholder text color */
+        }
+
+        button:hover {
+            background-color: #4b4b4b; /* Button hover color */
+            cursor: pointer;
+        }
+
+        h1 {
+            color: #00ff6a; /* Bright green color */
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetch Tennis Data</h1>
+    <input type="text" id="player-id-input" placeholder="Enter player ID or name">
+    <button id="fetch-data">Fetch Player Stats</button>
+
+    <!-- Canvas for the Chart -->
+    <canvas id="playerStatsChart" width="1200" height="500"></canvas> <!-- Increased width and height -->
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
