@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node bot.mjs",
-    "heroku-postbuild": "npm install puppeteer"
+    "postinstall": "npx puppeteer install"
   },
   "dependencies": {
     "chart.js": "^4.4.0",
