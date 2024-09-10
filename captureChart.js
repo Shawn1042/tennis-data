@@ -2,17 +2,16 @@ import puppeteer from 'puppeteer';
 
 export async function captureChart(playerName) {
   try {
-    // Use the environment variable or default to localhost
-    const baseUrl = process.env.RAILWAY_WEB_URL || 'http://localhost:3000';
-    const url = `${baseUrl}/chart?player=${encodeURIComponent(playerName)}`;
-    console.log(`Navigating to URL: ${url}`);
-
-    // Launch Puppeteer with necessary arguments for Railway deployment
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      headless: true,
+      executablePath: process.env.CHROME_BIN || null, // Use CHROME_BIN environment variable for the Chrome path
+      args: ['--no-sandbox', '--disable-setuid-sandbox'] // Required for running Puppeteer in a sandboxed environment
     });
 
     const page = await browser.newPage();
+    const url = `http://localhost:3000/chart?player=${encodeURIComponent(playerName)}`;
+    console.log(`Navigating to URL: ${url}`);
+
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     const chartExists = await page.evaluate(() => !!document.querySelector('canvas#playerChart'));
