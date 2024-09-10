@@ -6,17 +6,19 @@
   "type": "module",
   "scripts": {
     "start": "node bot.mjs",
-    "web": "node server.mjs",
-    "start-all": "concurrently \"npm run start\" \"npm run web\""
+    "heroku-postbuild": "npm install puppeteer"
   },
   "dependencies": {
-    "chart.js": "^4.4.4",
-    "concurrently": "^7.0.0",
+    "chart.js": "^4.4.0",
+    "concurrently": "^8.2.1",
     "cors": "^2.8.5",
-    "discord.js": "^14.16.1",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "node-fetch": "^3.3.2",
-    "puppeteer": "^23.3.0"
+    "puppeteer": "^21.3.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
