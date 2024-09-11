@@ -5,8 +5,10 @@ export async function captureChart(playerName) {
     // Launch Puppeteer with the new headless mode
     const browser = await puppeteer.launch({
       headless: "new", // Use the new headless mode
+      executablePath: 'C:\\Users\\shawn\\chrome\\win64-128.0.6613.137\\chrome-win64\\chrome.exe', // Path to the downloaded Chrome
       args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for running Puppeteer in a sandboxed environment
     });
+    
     
     const page = await browser.newPage();
     const url = `http://localhost:3000/chart?player=${encodeURIComponent(playerName)}`;
