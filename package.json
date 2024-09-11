@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node bot.mjs",
-    "postinstall": "npx puppeteer install"
+    "postinstall": "npx @puppeteer/browsers install chrome@stable"
   },
   "dependencies": {
     "chart.js": "^4.4.0",
